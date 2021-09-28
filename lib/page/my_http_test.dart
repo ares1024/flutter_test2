@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test2/model/photo_entity.dart';
 import 'package:flutter_test2/utils/log.dart';
 import 'package:http/http.dart' as http;
 
@@ -59,11 +60,13 @@ class _MyHttpTestState extends State<MyHttpTest> {
   }
 
   void loadData() async {
-    String url = "https://jsonplaceholder.typicode.com/posts";
+    String url = "https://jsonplaceholder.typicode.com/photos";
     var response = await http.get(Uri.parse(url));
-    Log.wtf(response.body);
+    Log.w(response.body);
+
     setState(() {
-      widgets = json.decode(response.body);
+      var map = json.decode(response.body) as List;
+      widgets = map.map((i) => PhotoEntity().fromJson(i)).toList();
     });
   }
 
@@ -71,7 +74,7 @@ class _MyHttpTestState extends State<MyHttpTest> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Text(
-          "id= ${widgets[position]["id"]}  title: ${widgets[position]["title"]}"),
+          "id= ${widgets[position].id}  thumbnailUrl: ${widgets[position].thumbnailUrl}"),
     );
   }
 }
