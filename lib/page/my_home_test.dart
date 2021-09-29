@@ -40,11 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Text("Clean"),
                 color: Colors.amberAccent,
               ),
-              Image.network(
-                "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-audi-rs6-avant-mmp-1-1620073915.jpg?crop=0.976xw:0.825xh;0.0240xw,0.113xh&resize=1980:*",
-                height: 180,
-                width: 180,
-              )
+              const Expanded(
+                  child: TextField(
+                decoration: InputDecoration(hintText: "请输入"),
+              ))
             ]),
       ),
     );
