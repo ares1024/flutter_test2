@@ -74,8 +74,9 @@ class _MyHttpTestState extends State<MyHttpTest> {
   Widget getRow(int position) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Text(
-          "id= ${widgets[position].id}  thumbnailUrl: ${widgets[position].thumbnailUrl}"),
+      child: Text("id= ${widgets[position].id}"
+          "\nthumbnailUrl: ${widgets[position].thumbnailUrl}"
+          "\nmsg = ${widgets[position].msg}"),
     );
   }
 }
