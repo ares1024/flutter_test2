@@ -20,6 +20,13 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
     curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
   }
 
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
