@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test2/generated/json/base/json_convert_content.dart';
 import 'package:flutter_test2/model/photo_entity.dart';
 import 'package:flutter_test2/utils/log.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,7 @@ class MyHttpTest extends StatefulWidget {
 }
 
 class _MyHttpTestState extends State<MyHttpTest> {
-  List widgets = [];
+  List<PhotoEntity> widgets = [];
 
   showLoadingDialog() {
     if (widgets.isEmpty) {
@@ -66,7 +67,7 @@ class _MyHttpTestState extends State<MyHttpTest> {
 
     setState(() {
       var map = json.decode(response.body) as List;
-      widgets = map.map((i) => PhotoEntity().fromJson(i)).toList();
+      widgets = JsonConvert.fromJsonAsT<List<PhotoEntity>>(map);
     });
   }
 
