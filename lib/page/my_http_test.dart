@@ -75,10 +75,7 @@ class _MyHttpTestState extends State<MyHttpTest> {
   Widget getRow(int position) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Text("id= ${widgets[position].id}"
-          "      name:${widgets[position].name}"
-          "\nzipcode: ${widgets[position].address.zipcode}"
-          "\nlat = ${widgets[position].address.geo.lat}"),
+      child: Text("user = ${widgets[position].toString()}"),
     );
   }
 }
