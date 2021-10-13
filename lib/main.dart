@@ -1,10 +1,16 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test2/page/my_fade_test.dart';
 import 'package:flutter_test2/page/my_home_test.dart';
 import 'package:flutter_test2/page/my_http_test.dart';
 import 'package:flutter_test2/page/my_signature_painter.dart';
+import 'package:flutter_test2/routers/application.dart';
+import 'package:flutter_test2/routers/routes.dart';
 
 void main() {
+  FluroRouter router = FluroRouter();
+  Routes.configureRoutes(router);
+  Application.router = router;
   runApp(const MyApp());
 }
 

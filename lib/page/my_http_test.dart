@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_test2/generated/json/base/json_convert_content.dart';
 import 'package:flutter_test2/model/user_entity.dart';
+import 'package:flutter_test2/routers/navigator_util.dart';
 import 'package:flutter_test2/utils/log.dart';
 import 'package:http/http.dart' as http;
 
@@ -73,9 +74,15 @@ class _MyHttpTestState extends State<MyHttpTest> {
   }
 
   Widget getRow(int position) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Text("user = ${widgets[position].toString()}"),
+    return GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Text("user = ${widgets[position].toString()}"),
+      ),
+      onTap: () => {
+        NavigatorUtil.goUserItemPage(context, widgets[position])
+            .then((value) => {Log.i(value as String)})
+      },
     );
   }
 }
