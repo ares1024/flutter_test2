@@ -15,7 +15,7 @@ class UserItemPage extends StatelessWidget {
     var map = json.decode(userJson);
     final UserEntity userEntity = JsonConvert.fromJsonAsT<UserEntity>(map);
     return WillPopScope(
-      onWillPop: () => NavigatorUtil.goBackWithParams(context, userEntity.name),
+      onWillPop: () => _requestPop(context, userEntity.name),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -28,5 +28,10 @@ class UserItemPage extends StatelessWidget {
         )),
       ),
     );
+  }
+
+  Future<bool> _requestPop(BuildContext context, String name) async {
+    NavigatorUtil.goBackWithParams(context, name);
+    return Future.value(true);
   }
 }

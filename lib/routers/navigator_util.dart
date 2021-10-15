@@ -18,8 +18,7 @@ class NavigatorUtil {
     Application.router.pop(context);
   }
 
-  static Future<bool> goBackWithParams(BuildContext context, params) async {
+  static void goBackWithParams(BuildContext context, params) {
     Application.router.pop(context, params);
-    return true;
   }
 }
