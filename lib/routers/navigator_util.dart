@@ -9,7 +9,17 @@ import 'package:flutter_test2/routers/routes.dart';
 class NavigatorUtil {
   static Future goUserItemPage(BuildContext context, UserEntity userEntity) {
     String userJson = json.encode(userEntity);
-    return Application.router
-        .navigateTo(context, Routes.pageUserItem + "?userJson=$userJson",transition: TransitionType.inFromRight);
+    return Application.router.navigateTo(
+        context, Routes.pageUserItem + "?userJson=$userJson",
+        transition: TransitionType.inFromRight);
+  }
+
+  static void goBack(BuildContext context) {
+    Application.router.pop(context);
+  }
+
+  static Future<bool> goBackWithParams(BuildContext context, params) async {
+    Application.router.pop(context, params);
+    return true;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter_test2/model/photo_entity.dart';
+import 'package:flutter_test2/model/base_entity.dart';
 
 photoEntityFromJson(PhotoEntity data, Map<String, dynamic> json) {
 	if (json['albumId'] != null) {
