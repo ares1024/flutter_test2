@@ -64,13 +64,18 @@ class _MyHttpTestState extends State<MyHttpTest> {
 
   void loadData() async {
     String url = "https://jsonplaceholder.typicode.com/users";
-    var response = await http.get(Uri.parse(url));
-    Log.w(response.body);
+    try{
+      var response = await http.get(Uri.parse(url));
+      Log.w(response.body);
 
-    setState(() {
-      var map = json.decode(response.body) as List;
-      widgets = JsonConvert.fromJsonAsT<List<UserEntity>>(map);
-    });
+      setState(() {
+        var map = json.decode(response.body) as List;
+        widgets = JsonConvert.fromJsonAsT<List<UserEntity>>(map);
+      });
+    }catch(e){
+      Log.e("loadData e = ${e.toString()}");
+    }
+
   }
 
   Widget getRow(int position) {
