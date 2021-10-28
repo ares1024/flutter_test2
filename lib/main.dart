@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test2/page/my_fade_test.dart';
@@ -7,10 +8,14 @@ import 'package:flutter_test2/page/my_signature_painter.dart';
 import 'package:flutter_test2/routers/application.dart';
 import 'package:flutter_test2/routers/routes.dart';
 
-void main() {
+void main() async {
   FluroRouter router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
