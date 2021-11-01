@@ -38,7 +38,7 @@ class BasePage {
 }
 
 class StyledButton extends StatelessWidget {
-  const StyledButton({required this.child, required this.onPressed});
+  const StyledButton({required this.child, required this.onPressed, Key? key}) : super(key: key);
 
   final Widget child;
   final void Function() onPressed;

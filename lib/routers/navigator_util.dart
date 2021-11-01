@@ -21,4 +21,13 @@ class NavigatorUtil {
   static void goBackWithParams(BuildContext context, params) {
     Application.router.pop(context, params);
   }
+
+  static void goLoginPage(BuildContext context) {
+    Application.router.navigateTo(context, Routes.pageLogin, clearStack: true);
+  }
+
+  static void goMainPage(BuildContext context, bool isClearStack) {
+    Application.router
+        .navigateTo(context, Routes.pageMain, clearStack: isClearStack);
+  }
 }
