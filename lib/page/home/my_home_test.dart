@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (user == null) {
         NavigatorUtil.goLoginPage(context);
       }else{
-        _name = user.displayName!;
+        _name = user.displayName ?? "";
         Log.i("initState listen name = $_name");
       }
     });

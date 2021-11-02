@@ -161,7 +161,7 @@ class _LoginSignState extends State<PageLoginSign> {
 
       final UserCredential authResult =
           await _auth.signInWithCredential(credential);
-      final User? user = authResult.user;
+      // final User? user = authResult.user;
       Log.d("authResult = ${authResult.toString()}");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -177,7 +177,16 @@ class _LoginSignState extends State<PageLoginSign> {
   }
 
   void _signInByEmail() {
-    _unameController.text;
-    _pwdController.text;
+    String email = _unameController.text;
+    String pwd = _pwdController.text;
+
+    try {
+      _auth.signInWithEmailAndPassword(
+        email: email,
+        password: pwd,
+      );
+    } on FirebaseAuthException catch (e) {
+      Log.e("_signInByEmail e = ${e.toString()}");
+    }
   }
 }
