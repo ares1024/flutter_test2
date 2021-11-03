@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test2/page/base_page.dart';
 import 'package:flutter_test2/routers/navigator_util.dart';
 import 'package:flutter_test2/utils/log.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -161,8 +162,11 @@ class _LoginSignState extends State<PageLoginSign> {
 
       final UserCredential authResult =
           await _auth.signInWithCredential(credential);
-      // final User? user = authResult.user;
       Log.d("authResult = ${authResult.toString()}");
+
+      final User? user = authResult.user;
+      String idToken = await user!.getIdToken(true);
+      Log.d("idToken = $idToken");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Log.e('No user found for that email.');
@@ -171,22 +175,34 @@ class _LoginSignState extends State<PageLoginSign> {
       } else {
         Log.e("_signInWithGoogle e = ${e.toString()}");
       }
+      BasePage().showErrorDialog(context, "_signInByGoogle", e);
     } finally {
       Log.i("_signInByGoogle end ----");
     }
   }
 
-  void _signInByEmail() {
+  void _signInByEmail() async {
     String email = _unameController.text;
     String pwd = _pwdController.text;
 
     try {
-      _auth.signInWithEmailAndPassword(
+      await _auth.signInWithEmailAndPassword(
         email: email,
         password: pwd,
       );
     } on FirebaseAuthException catch (e) {
+      String msg = "";
       Log.e("_signInByEmail e = ${e.toString()}");
+      if (e.code == "user-not-found") {
+        msg = "没有此用户！";
+      } else if (e.code == "invalid-email") {
+        msg = "无效的email地址！";
+      } else if (e.code == "user-disabled") {
+        msg = "此账号被禁用！";
+      } else if (e.code == "wrong-password") {
+        msg = "密码错误！";
+      }
+      BasePage().showErrorDialog(context, "_signInByEmail", Exception(msg));
     }
   }
 }

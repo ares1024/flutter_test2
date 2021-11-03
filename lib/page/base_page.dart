@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BasePage {
-  void _showErrorDialog(BuildContext context, String title, Exception e) {
+  void showErrorDialog(BuildContext context, String title, Exception e) {
     showDialog<void>(
       context: context,
       builder: (context) {
