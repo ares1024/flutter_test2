@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Log.i("_signOut user = ${user.toString()}");
       if (user == null) {
         NavigatorUtil.goLoginPage(context);
-      }else{
+      } else {
         _name = user.displayName ?? "";
         Log.i("initState listen name = $_name");
       }
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget._title),
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.cleaning_services_outlined),
+              icon: const Icon(Icons.logout),
               tooltip: 'signOut',
               onPressed: _signOut,
             ),
@@ -72,10 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Text("Clean"),
                   color: Colors.amberAccent,
                 ),
-                const Expanded(
-                    child: TextField(
-                  decoration: InputDecoration(hintText: "请输入"),
-                ))
+                MaterialButton(
+                  onPressed: () => NavigatorUtil.goPhysics(context),
+                  child: const Text("重力小球"),
+                  color: Colors.purpleAccent,
+                ),
               ]),
         ));
   }

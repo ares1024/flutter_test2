@@ -6,12 +6,14 @@ class Routes {
   static String pageUserItem = "/user_item";
   static String pageLogin = "/login";
   static String pageMain = "/main";
+  static String pagePhysics = "/physics";
 
   static void configureRoutes(FluroRouter router) {
     // router.define(pageHome, handler: homeHandler);
     router.define(pageUserItem, handler: userItemHandler);
     router.define(pageLogin, handler: loginHandler);
     router.define(pageMain, handler: mainHandler);
+    router.define(pagePhysics, handler: physicsHandler);
     router.notFoundHandler = emptyHandler;
   }
 }

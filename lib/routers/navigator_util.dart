@@ -30,4 +30,8 @@ class NavigatorUtil {
     Application.router
         .navigateTo(context, Routes.pageMain, clearStack: isClearStack);
   }
+
+  static void goPhysics(BuildContext context) {
+    Application.router.navigateTo(context, Routes.pagePhysics);
+  }
 }

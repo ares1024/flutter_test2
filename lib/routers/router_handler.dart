@@ -4,6 +4,7 @@ import 'package:flutter_test2/page/http/user_item_page.dart';
 import 'package:flutter_test2/page/login/page_login_sign.dart';
 import 'package:flutter_test2/page/page_empty.dart';
 import 'package:flutter_test2/page/page_main.dart';
+import 'package:flutter_test2/page/test/physics/pate_physics_test.dart';
 
 var emptyHandler =
     Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
@@ -23,4 +24,8 @@ var loginHandler =
 
 var mainHandler = Handler(
   handlerFunc: (context, parameters) => const PageMain(),
+);
+
+var physicsHandler = Handler(
+  handlerFunc: (context, parameters) => const PagePhysics(),
 );
